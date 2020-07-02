@@ -1,5 +1,4 @@
 import { StyleSheet, Platform } from 'react-native';
-import { WIDTH } from '../../helper/constants';
 
 export default StyleSheet.create({
   container: {
@@ -55,36 +54,4 @@ export default StyleSheet.create({
     width: '100%',
     height: 5,
   },
-  bodyContainer: {
-    flex: 1,
-    paddingVertical: 20,
-  },
-  options: {
-    marginBottom: 20,
-    alignItems: 'center',
-  },
-  optionBlock: {
-    width: WIDTH / 2 - 20,
-    height: WIDTH / 2 - 20,
-    marginHorizontal: 10,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 7,
-    borderColor: '#eee',
-    borderWidth: 1,
-    shadowOffset: { width: 3, height: 3 },
-    shadowColor: 'skyblue',
-    shadowOpacity: 0.7,
-    elevation: 5,
-  },
-  optionText: {
-    color: '#fff',
-    fontSize: 16,
-    fontFamily: 'NunitoSans-ExtraBold',
-  },
-  img: {
-    height: '100%',
-    width: '100%',
-  },
-});
+})

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   View,
@@ -6,11 +6,12 @@ import {
   TouchableOpacity,
   FlatList,
   Animated,
+  ScrollView
 } from 'react-native';
 import styles from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 import * as Animatable from 'react-native-animatable';
-import {LIGHT_SPEED_IN} from '../../helper/constants';
+import { LIGHT_SPEED_IN } from '../../helper/constants';
 
 //images
 import ScratchImg from '../../../assets/images/scratch.png';
@@ -21,10 +22,10 @@ import MathQuizImg from '../../../assets/images/math_quiz.jpeg';
 import PuzzleImg from '../../../assets/images/puzzle.jpeg';
 
 class Item extends React.Component {
-  state = {loading: true};
+  state = { loading: true };
 
   componentDidMount() {
-    setTimeout(() => this.setState({loading: false}), this.props.time);
+    setTimeout(() => this.setState({ loading: false }), this.props.time);
   }
 
   render() {
@@ -37,7 +38,7 @@ class Item extends React.Component {
     });
     let transformStyle = {
       ...styles.renderView,
-      transform: [{scale: cardScale}],
+      transform: [{ scale: cardScale }],
     };
 
     if (this.state.loading) {
@@ -64,12 +65,12 @@ class Item extends React.Component {
 export class index extends Component {
   state = {
     optionsData: [
-      {name: 'Scratch And Win', img: ScratchImg},
-      {name: 'Guess Company Logo', img: LogoImg},
-      {name: 'Guess Movie Name', img: MovieImg},
-      {name: 'Play Quiz', img: QuizImg},
-      {name: 'Math Quiz', img: MathQuizImg},
-      {name: 'Puzzle', img: PuzzleImg},
+      { name: 'Scratch And Win', img: ScratchImg },
+      { name: 'Guess Company Logo', img: LogoImg },
+      { name: 'Guess Movie Name', img: MovieImg },
+      { name: 'Play Quiz', img: QuizImg },
+      { name: 'Math Quiz', img: MathQuizImg },
+      { name: 'Puzzle', img: PuzzleImg },
     ],
   };
 
@@ -88,7 +89,7 @@ export class index extends Component {
   */
 
   _onCategoryPressed = (item, index) => {
-    this.props.navigation.navigate('OptionDetail', {data: item});
+    this.props.navigation.navigate('OptionDetail', { data: item });
   };
 
   /*
@@ -117,10 +118,10 @@ export class index extends Component {
           <Text style={styles.headerTitle}>win india win</Text>
           <View style={styles.titleContainer}>
             <LinearGradient
-              start={{x: 0.0, y: 0.0}}
-              end={{x: 1.0, y: 1.0}}
+              start={{ x: 0.0, y: 0.0 }}
+              end={{ x: 1.0, y: 1.0 }}
               colors={['#00FF00', '#FFFF00', '#FF7F00', '#FF0000']}
-              style={[styles.coinDisplay, {marginRight: 5}]}>
+              style={[styles.coinDisplay, { marginRight: 5 }]}>
               <TouchableOpacity style={styles.coinInner}>
                 <Image
                   style={styles.coin}
@@ -130,8 +131,8 @@ export class index extends Component {
               </TouchableOpacity>
             </LinearGradient>
             <LinearGradient
-              start={{x: 0.0, y: 0.0}}
-              end={{x: 1.0, y: 1.0}}
+              start={{ x: 0.0, y: 0.0 }}
+              end={{ x: 1.0, y: 1.0 }}
               colors={['#00FF00', '#FFFF00', '#FF7F00', '#FF0000']}
               style={styles.coinDisplay}>
               <TouchableOpacity style={styles.coinInner}>
@@ -145,8 +146,8 @@ export class index extends Component {
           </View>
         </View>
         <LinearGradient
-          start={{x: 0.0, y: 0.0}}
-          end={{x: 1.0, y: 1.0}}
+          start={{ x: 0.0, y: 0.0 }}
+          end={{ x: 1.0, y: 1.0 }}
           colors={[
             '#FF0000',
             '#FF7F00',
@@ -164,18 +165,18 @@ export class index extends Component {
 
   renderBody = () => {
     return (
-      <View style={styles.bodyContainer}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.bodyContainer}>
         <FlatList
           numColumns={2}
           keyExtractor={(item, index) => `${item}`}
           data={this.state.optionsData}
           renderItem={this.renderItem}
         />
-      </View>
+      </ScrollView>
     );
   };
 
-  renderItem = ({item, index}) => {
+  renderItem = ({ item, index }) => {
     return (
       <Item
         time={index * 70}
